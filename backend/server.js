@@ -12,20 +12,22 @@ console.log(`Running in ${environment} mode`);
 
 const app = express();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());    // allows us to accept json data in req.body
 
 app.use("/api/products", productRoutes);
 
 // if env -> production, set dist folder as static folder
-if(process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/frontend/dist")));
-
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+if (process.env.NODE_ENV === 'production') {
+    const frontendBuildPath = path.join(__dirname, '../frontend/dist');
+    app.use(express.static(frontendBuildPath));
+    
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(frontendBuildPath, 'index.html'));
     });
 }
 
