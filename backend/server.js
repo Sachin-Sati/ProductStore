@@ -27,7 +27,14 @@ app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 });
 
-app.listen(PORT, () => {
-    connectDB();
-    console.log("Server started at http://localhost:"+PORT);
-});
+// Connect to DB first, then start server
+connectDB();
+    then(() => {
+        app.listen(PORT, () => {
+            console.log("Server started at http://localhost:"+PORT);
+        });
+    })
+    .catch((err) => {
+        console.error("Failed to connect to MongoDB:", err);
+        process.exit(1);
+      });
