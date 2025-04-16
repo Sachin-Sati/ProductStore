@@ -28,8 +28,8 @@ app.get("*", (req, res) => {
 });
 
 // Connect to DB first, then start server
-connectDB();
-    then(() => {
+connectDB()
+    .then(() => {
         app.listen(PORT, () => {
             console.log("Server started at http://localhost:"+PORT);
         });
