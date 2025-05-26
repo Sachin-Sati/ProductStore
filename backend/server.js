@@ -17,6 +17,15 @@ console.log(`Running in ${environment} mode`);
 // Initialize Express app
 const app = express();
 
+// CORS - Express app allows requests from frontend
+const cors = require("cors");
+
+app.use(cors({
+  origin: "https://product-store-frontend-pbjtnljbk-sachin-satis-projects.vercel.app/",
+  credentials: true
+}));
+
+
 // Set the port from environment variable or use 5000 by default
 const PORT = process.env.PORT || 5000;
 
