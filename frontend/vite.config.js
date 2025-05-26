@@ -5,12 +5,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
-        target: process.env.NODE_ENV === 'production' 
-          ? 'https://mern-stack-project-5kk4.onrender.com' 
-          : "http://localhost:5000",
+      '/api': {
+        target: process.env.VITE_APP_API_URL,
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }

@@ -10,8 +10,10 @@ export const useProductStore = create((set) => ({
         const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/products`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
+            credentials: 'include',
             body: JSON.stringify(newProduct),
         });
         const data = await res.json();

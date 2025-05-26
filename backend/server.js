@@ -19,10 +19,15 @@ console.log(`Running in ${environment} mode`);
 const app = express();
 
 // CORS - Express app allows requests from frontend
-app.use(cors({
-  origin: "https://product-store-frontend-jade.vercel.app",
+// CORS configuration
+const corsOptions = {
+  origin: ['http://localhost:5173', 'https://product-store-frontend-jade.vercel.app/'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
 
 
 // Set the port from environment variable or use 5000 by default
