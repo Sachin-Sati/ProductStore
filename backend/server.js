@@ -21,7 +21,7 @@ const app = express();
 const cors = require("cors");
 
 app.use(cors({
-  origin: "https://product-store-frontend-jade.vercel.app/",
+  origin: "https://product-store-frontend-jade.vercel.app",
   credentials: true
 }));
 
