@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon backend/server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build",
     "start": "node backend/server.js"
   },
   "type": "module",
