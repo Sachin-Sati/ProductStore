@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from "dotenv";
 import { connectDB } from './config/db.js';
 import path from 'path';
+import cors from "cors";
 
 // Import route handlers
 import productRoutes from "./routes/product.route.js";
@@ -18,8 +19,6 @@ console.log(`Running in ${environment} mode`);
 const app = express();
 
 // CORS - Express app allows requests from frontend
-const cors = require("cors");
-
 app.use(cors({
   origin: "https://product-store-frontend-jade.vercel.app",
   credentials: true
