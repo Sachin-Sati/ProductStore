@@ -32,10 +32,10 @@ app.use("/api/products", productRoutes);
 // Serve static files from the frontend build folder if in production
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-// Handle all other GET requests by sending back the frontend's index.html
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-});
+// // Handle all other GET requests by sending back the frontend's index.html
+// app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+// });
 
 // Connect to MongoDB, then start the server
 connectDB()
