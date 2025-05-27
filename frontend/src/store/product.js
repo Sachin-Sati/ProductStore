@@ -9,6 +9,7 @@ export const useProductStore = create((set) => ({
         }
         const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/products`, {
             method: "POST",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -21,13 +22,17 @@ export const useProductStore = create((set) => ({
         return {success:true, message:"Product created successfully."};
     },
     fetchProducts: async() => {
-        const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/products`);
+        const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/products`, {
+            method: "GET",
+            credentials: 'include',
+        });
         const data = await res.json();
         set({products:data.data});
     },
     deleteProducts: async(pid) => {
         const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/products/${pid}`, {
             method: "DELETE",
+            credentials: 'include',
         });
         const data = await res.json();
         console.log(data); // debug response
@@ -40,6 +45,7 @@ export const useProductStore = create((set) => ({
     updateProduct: async(pid, updatedProduct) => {
         const res = await fetch(`${import.meta.env.VITE_APP_API_URL}/api/products/${pid}`, {
             method: "PUT",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json"
             },

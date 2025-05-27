@@ -17,9 +17,9 @@ const app = express();
 
 // CORS - Express app allows requests from frontend
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://product-store-frontend-jade.vercel.app/'],
+  origin: ['http://localhost:5173', 'https://product-store-frontend-jade.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 app.use(cors(corsOptions));
