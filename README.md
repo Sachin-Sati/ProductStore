@@ -1,6 +1,8 @@
 # Product Store - MERN Stack Application
 
-A full-stack web application built with the MERN stack (MongoDB, Express.js, React.js, Node.js) that allows users to manage products with CRUD operations.
+A full-stack e-commerce application built with MongoDB, Express.js, React.js, Node.js that allows users to manage products with CRUD operations. 
+
+Live demo: [Product Store](https://productstorebackend.onrender.com)
 
 ## Features
 
@@ -10,6 +12,7 @@ A full-stack web application built with the MERN stack (MongoDB, Express.js, Rea
 - 🗑️ Delete products
 - 🌓 Dark/Light mode toggle
 - 💪 Responsive design for all screen sizes
+- 🚀 Deployed on Render.com
 
 ## Tech Stack
 
@@ -25,6 +28,7 @@ A full-stack web application built with the MERN stack (MongoDB, Express.js, Rea
 - Express.js
 - MongoDB with Mongoose
 - dotenv for environment variables
+- CORS for cross-origin resource sharing
 
 ## Installation
 
@@ -43,15 +47,26 @@ cd frontend
 npm install
 ```
 
-3. Create a `.env` file in the root directory and add your MongoDB URI
+3. Create environment files:
+
+Root directory `.env`:
 ```env
 MONGO_URI=your_mongodb_uri
 PORT=5000
 ```
 
+Frontend directory `.env`:
+```env
+VITE_APP_API_URL=https://productstorebackend.onrender.com
+```
+
 4. Run the development server
 ```bash
-# Run backend and frontend concurrently
+# Run backend
+npm run dev
+
+# Run frontend (in a separate terminal)
+cd frontend
 npm run dev
 ```
 
@@ -65,7 +80,7 @@ npm run dev
 ## Project Structure
 
 ```
-mern-crash-course/
+product-store/
 ├── backend/
 │   ├── config/
 │   │   └── db.js
@@ -83,6 +98,7 @@ mern-crash-course/
 │   │   ├── store/
 │   │   ├── App.jsx
 │   │   └── main.jsx
+│   ├── .env
 │   └── package.json
 ├── .env
 └── package.json
@@ -90,10 +106,33 @@ mern-crash-course/
 
 ## Scripts
 
-- `npm run dev` - Run the development server
+- `npm run dev` - Run the development server with nodemon
 - `npm run build` - Build the frontend for production
 - `npm start` - Start the production server
+- `npm run preview` - Preview the production build locally
+
+## Deployment
+
+The application is deployed on Render.com with the following configuration:
+
+1. Backend Service:
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+   - Environment Variables:
+     - `NODE_ENV=production`
+     - `MONGO_URI=your_mongodb_uri`
+     - `PORT=10000`
+
+2. Frontend Static Site:
+   - Build Command: `npm install && npm run build`
+   - Publish Directory: `dist`
+   - Environment Variables:
+     - `VITE_APP_API_URL=https://productstorebackend.onrender.com`
 
 ## Contributing
 
 Feel free to open issues and pull requests!
+
+## License
+
+ISC
